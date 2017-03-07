@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^signup/successful/$', views.signup_successful, name = 'signup successful'),
 	url(r'^accounts/login/$', auth_views.login, name = 'login'),
     url(r'^homepage/$', views.homepage, name = 'login_Home'),
+    url(r'^logout/$' , views.logout, name ='logout'),
+
    ]

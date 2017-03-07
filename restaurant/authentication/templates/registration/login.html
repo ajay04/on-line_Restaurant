@@ -1,8 +1,10 @@
-
-<form method="POST">
-	{% csrf_token %}
-	<label>Username: <input type="text" name="Username"></label>
-	<label>Passwoed: <input type="password" name="password"></label>
-	<button type="submit" value= "login" onclick="window.location.href ='/homepage">Login</button>
-	
-</form>
+<form class="form" method="post">
+        {% csrf_token %}
+        <label>Username: <input type="text" placeholder="Username" name="username"></label>
+        <br>
+        <label>Password: <input type="password" placeholder="Password" name="password"></label>
+        <br>
+        <br>
+        <button type="submit" value="Login" id="login-button" onclick="window.location.href='/home" class="btn btn-danger btn-lg">Login</button>
+        <button type="button" onclick="window.location.href='/register/' " class="btn btn-danger btn-lg">Register</button>
+    </form>

@@ -38,8 +38,13 @@ def signup_successful(request):
 
 @login_required
 def homepage(request):
-	user = User.objects.all()
+	user = UserProfile.objects.all()
 	context = {
-	'user':user,
+	'user':request.user,
+	
 	}
+	#return render_to_response('homepage.html')
 	return render_to_response('homepage.html', context)
+
+def logout(request):
+	return render_to_response('logout.html')
