@@ -2,7 +2,10 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from .models import UserProfile
 
 
 #from .models import Profile
@@ -10,7 +13,7 @@ from authentication.forms import RegistrationForm, UserForm
 # Create your views here.
 
 def index(request):
-	return render_to_response('authentication/index.html')
+	return render_to_response('index.html')
 
 
 @csrf_exempt
@@ -32,3 +35,11 @@ def signUp(request):
 
 def signup_successful(request):
 	return render_to_response('signup_successful.html')
+
+@login_required
+def homepage(request):
+	user = User.objects.all()
+	context = {
+	'user':user,
+	}
+	return render_to_response('homepage.html', context)
