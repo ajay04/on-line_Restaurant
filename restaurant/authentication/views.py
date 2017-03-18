@@ -17,28 +17,6 @@ def index(request):
 
 
 
-def sendmail(request):
-      if request.method == 'POST':
-        form = EmailForm(request.POST)
-        if form.is_valid():
-          firstname = form.cleaned_data['firstname']
-          lastname = form.cleaned_data['lastname']
-          email = form.cleaned_data['email']
-          subject = form.cleaned_data['subject']
-          botcheck = form.cleaned_data['botcheck'].lower()
-          message = form.cleaned_data['message']
-          if botcheck == 'yes':
-            try:
-              fullemail = firstname + " " + lastname + " " + "<" + email + ">"
-              send_mail(subject, message, fullemail, ['SENDTOUSER@DOMAIN.COM'])
-              return HttpResponseRedirect('/email/thankyou/')
-            except:
-              return HttpResponseRedirect('/email/')
-        else:
-          return HttpResponseRedirect('/email/')
-      else:
-        return HttpResponseRedirect('/email/')  
-
 
 @csrf_exempt
 def signUp(request):
@@ -70,5 +48,6 @@ def homepage(request):
 	#return render_to_response('homepage.html')
 	return render_to_response('homepage.html', context)
 
-def logout(request):
+def logout_page(request):
+	logout(request)
 	return render_to_response('logout.html')
