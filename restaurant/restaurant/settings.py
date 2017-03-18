@@ -26,11 +26,14 @@ SECRET_KEY = 'u(97rm!q_g^uk&cs)d)eja93f==(yvk=uvj08dyj-laq7+pdqj'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#testing email for account approvel
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+##above
 
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'authentication',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'south',
 ]
 
 MIDDLEWARE = [

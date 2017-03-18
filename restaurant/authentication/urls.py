@@ -10,5 +10,7 @@ urlpatterns = [
 	url(r'^accounts/login/$', auth_views.login, name = 'login'),
     url(r'^homepage/$', views.homepage, name = 'login_Home'),
     url(r'^logout/$' , views.logout, name ='logout'),
+	#url(r'^email/send/$', views.sendmail),
+
 
    ]
