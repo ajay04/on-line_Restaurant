@@ -1,2 +1,3 @@
-# on-line_Restaurant
-Software Engineering Group Project
+# on-line_Restaurant order and delivery system 
+
+This is a project for CS322, Software Engineering 
