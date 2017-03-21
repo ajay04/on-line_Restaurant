@@ -18,7 +18,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-	url(r'^', include('authentication.urls')),
+	url(r'^', include('supplementtut.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^registration/' , include('registration.urls')),
 ]
