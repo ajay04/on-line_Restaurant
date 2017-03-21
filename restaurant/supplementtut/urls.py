@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^accounts/profile/$', views.homepage, name = 'login_Home'),
     url(r'^logout/$' , views.logout_page, name ='logout'),
 	#url(r'^email/send/$', views.sendmail),
-	#url(r'^registration/register/$', views.signup, name = "register"),
+	url(r'^registration/activate/complete/$', views.activation_complete, name = "complete"),
 
 
    ]	

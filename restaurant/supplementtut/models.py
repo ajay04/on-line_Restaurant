@@ -14,7 +14,7 @@ PROFILE_TYPES = (
     )
 
 class MyRegistrationSupplement(RegistrationSupplementBase):
-	Full_name = models.CharField("Full Name", max_length=100, help_text="Please fill your real name")
+	realname = models.CharField("Full Name", max_length=100, help_text="Please fill your real name")
 	#age = models.IntegerField("Age")
 	user_type = models.CharField(max_length=20, default='customer', choices=PROFILE_TYPES)
 	remarks = models.TextField("Remarks", blank=True)

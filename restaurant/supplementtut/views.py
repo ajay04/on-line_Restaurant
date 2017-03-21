@@ -39,3 +39,6 @@ def homepage(request):
 def logout_page(request):
 	logout(request)
 	return render_to_response('logout.html')
+
+def activation_complete(request):
+	return render_to_response('registration/complete.html')
