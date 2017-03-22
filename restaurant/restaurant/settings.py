@@ -33,22 +33,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
-    # 'registration',
-    'recipes',
-    'authentication',
-=======
     'registration',
-    #'authentication',
->>>>>>> 34db759a88706b2875c95dc8881a07adaf8dfdc8
+    'recipes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #'south',
     'supplementtut',
 ]
 
