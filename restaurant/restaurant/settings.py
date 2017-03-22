@@ -33,9 +33,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     # 'registration',
     'recipes',
     'authentication',
+=======
+    'registration',
+    #'authentication',
+>>>>>>> 34db759a88706b2875c95dc8881a07adaf8dfdc8
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +49,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #'south',
+    'supplementtut',
 ]
+
+#supplement registration
+REGISTRATION_SUPPLEMENT_CLASS = 'supplementtut.models.MyRegistrationSupplement'
+#REGISTRATION_SUPPLEMENT_CLASS = None
+
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_ADMIN_INLINE_BASE_CLASS = 'registration.admin.RegistrationSupplementAdminInlineBase'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
