@@ -38,7 +38,6 @@ class Recipe(models.Model):
         self.avg_rating = (self.num_reviews * self.avg_rating +
                                     rating) / (self.num_reviews+1)
         self.num_reviews +=1
-        print ("Rated!")
 
 class Review(models.Model):
     content = models.TextField()
