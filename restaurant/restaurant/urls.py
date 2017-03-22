@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-admin.autodiscover()
+# admin.autodiscover() --depricated
 
 urlpatterns = [
-	url(r'^', include('authentication.urls')),
+    url(r'', include('recipes.urls', namespace='recipes')),
+    url(r'^auth/', include('authentication.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^registration/' , include('registration.urls')),
+
+    # url(r'^registration/' , include('registration.urls')),
 ]

@@ -1,0 +1,90 @@
+{% extends 'recipes/base.html'%}
+
+
+{% block jumbotron %}
+<div class="container">
+<div class="jumbotron">
+  <div class="container">
+    <br><h1 class="display-3 text-center" >{{recipe.name}} - {{recipe.cuisine}} </h1><br>
+    <p>Receipe Description goes here. We've got the tastiest, cheapest and grossest(!) food in town! like tons of diferent cuisines and junk foods. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  </div>
+</div>
+</div>
+{% endblock jumbotron %}
+{% load static %}
+{% block recipes %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-2 col-lg-2">
+      <div class="thumbnail">
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-2 col-lg-2">
+      <div class="thumbnail">
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+        <p><img width="150" height="130" src="{% static "img/sample.jpg" %}" alt="img"></p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-8 col-lg-8">
+      <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-5 " >Recipe Info</h1><br>
+          <h5>Description: <small> {{recipe.description}}</small></h5>
+          <h5>Cuisine: <small> {{recipe.cuisine}}</small></h5>
+          <h5>Price: <small> ${{recipe.price}}</small></h5>
+          <h5>Rating: <small> {{recipe.avg_rating}}</small></h5>
+          <h5>Chef: <small> {{recipe.chef}}</small></h5><br>
+          <p><button class="btn btn-md btn-primary"
+             name="button" id='review' data-target='#popup' data-toggle='modal'>Review</button>
+            <button class="btn btn-md btn-success">Order</button></p>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="jumbotron">
+  <div class="container">
+    <br><h1 class="display-4 ">Customer Reviews </h1><br>
+
+      {% for review in reviews %}
+      <ul>
+        <li>Customer: {{review.author}}</li>
+        <li>Rating: {{review.value}}/10</li>
+        <li>Review: {{review.content}}</li>
+        </ul>
+      {% endfor %}
+
+  <div class="modal fade" tabindex="-1" role="dialog" id='popup'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Enter a Review</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form action="{{recipe.get_absolute_url}}" method="POST"> {% csrf_token %}
+      <div class="modal-body">
+        {{form.as_p}}
+      </div>
+      <div class="modal-footer">
+        <input type="submit" value=Submit! class="btn btn-primary">
+      </div></form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+  </div>
+</div>
+</div>
+
+{% endblock recipes %}

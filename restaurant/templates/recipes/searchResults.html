@@ -1,0 +1,37 @@
+{% extends "recipes/base.html" %}
+
+
+{% block jumbotron %}
+<div class="container">
+<div class="jumbotron">
+  <div class="container">
+    <br><br><br><h1 class="display-3">Search Results for : '{{term}}'</h1><br>
+    <p>We've got the tastiest, cheapest and grossest(!)
+       food in town! like tons of diferent cuisines and junk foods, Diabetes Guaranteed</p>
+    <br><p>
+  </div>
+</div>
+</div>
+{% endblock jumbotron %}
+{% load static %}
+{% block recipes %}
+
+      <div class="container">
+        <div class="row">
+          {% for recipe in recipes %}
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <img width="242" height="200" src="{% static "img/sample.jpg" %}" alt="img">
+              <div class="caption">
+                <h3>{{recipe.name}}</h3>
+                <p class="limtiCharClass">{{recipe.description}}</p>
+                <p><a href="#" class="btn btn-primary" role="button">View &raquo;</a>
+                  <a href="#" class="btn btn-success" role="button">Order &raquo;</a></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+{% endblock recipes %}

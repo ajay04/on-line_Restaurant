@@ -13,9 +13,7 @@ from authentication.forms import RegistrationForm, UserForm
 # Create your views here.
 
 def index(request):
-	return render_to_response('index.html')
-
-
+	return render_to_response('authentication/index.html')
 
 
 @csrf_exempt
@@ -29,25 +27,25 @@ def signUp(request):
 					email = form.cleaned_data['email'],
 					first_name = form.cleaned_data['first_name'],
 					last_name = form.cleaned_data['last_name'])
-			return HttpResponseRedirect('/signup/successful')
+			return HttpResponseRedirect('authentication/signup/successful')
 	else:
 		form = RegistrationForm()
 	variables = RequestContext(request, {'form': form})
-	return render_to_response('signup.html', variables)
+	return render_to_response('authentication/signup.html', variables)
 
 def signup_successful(request):
-	return render_to_response('signup_successful.html')
+	return render_to_response('authentication/signup_successful.html')
 
 @login_required
 def homepage(request):
 	user = UserProfile.objects.all()
 	context = {
 	'user':request.user,
-	
+
 	}
 	#return render_to_response('homepage.html')
-	return render_to_response('homepage.html', context)
+	return render_to_response('authentication/homepage.html', context)
 
 def logout_page(request):
 	logout(request)
-	return render_to_response('logout.html')
+	return render_to_response('authentication/logout.html')
