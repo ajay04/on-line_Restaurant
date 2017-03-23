@@ -59,9 +59,7 @@ def createRecipe(request):
 
 def search(request):
     q = request.GET['q'].lower()
-    print (q)
     results = Recipe.objects.filter(Q(description__icontains=q) |
                     Q(name__icontains=q) | Q(cuisine__icontains=q) ).order_by('-avg_rating')
-    print (results)
     context = {'recipes':results, 'term': q}
     return render (request,'recipes/searchResults.html', context)

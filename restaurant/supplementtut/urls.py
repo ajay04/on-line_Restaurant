@@ -5,7 +5,7 @@ from supplementtut import views
 
 urlpatterns = [
 
-    url(r'^signup/$', views.signUp, name='signUp'),
+    url(r'^signup/$', views.signup, name='signUp'),
     url(r'^signup/successful/$', views.signup_successful, name = 'signup successful'),
 
 	url(r'^accounts/login/$', auth_views.login, name = 'login'),
