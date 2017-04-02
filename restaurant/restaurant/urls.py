@@ -18,8 +18,8 @@ from django.contrib import admin
 # admin.autodiscover() --depricated
 
 urlpatterns = [
-    url(r'', include('recipes.urls', namespace='recipes')),
-	url(r'', include('supplementtut.urls', namespace='supplement')),
+	url(r'^', include('authentication.urls')),
+    url(r'^recipies/', include('recipes.urls', namespace='recipes')),
     url(r'^admin/', admin.site.urls),
 
     # url(r'^registration/' , include('registration.urls')),
