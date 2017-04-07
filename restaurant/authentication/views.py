@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_protect
+from recipes.models import Recipe
 
 
 
@@ -13,7 +14,8 @@ from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 def index(request):
-	return render_to_response('index.html')
+	context = { 'recipes' : Recipe.objects.all()}
+	return render(request, 'index.html', context)
 
 @csrf_exempt
 def signup(request):
