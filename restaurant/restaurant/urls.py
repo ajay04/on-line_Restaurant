@@ -17,7 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+<<<<<<< HEAD
     url(r'', include('recipes.urls', namespace='recipes')),
 	# url(r'', include('supplementtut.urls', namespace='supplement')),
+=======
+	url(r'^', include('authentication.urls')),
+    url(r'^recipies/', include('recipes.urls', namespace='recipes')),
+>>>>>>> upstream/master
     url(r'^admin/', admin.site.urls),
 ]

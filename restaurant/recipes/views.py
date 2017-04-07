@@ -15,7 +15,6 @@ def index(request):
     context = { 'recipes' : Recipe.objects.all()}
     return render(request, 'recipes/index.html', context)
 
-
 def cuisine(request, cuisine=None):
     recipes = Recipe.objects.filter(cuisine=cuisine)
     context = {
