@@ -64,9 +64,9 @@ def user_login(request):
 				login(request, user)
 				return HttpResponseRedirect('/')
 			else:
-				return HttpResponse("Inactive Account")
+				return HttpResponse("Invalid Login Information")
 		else:
-			return HttpResponse ("Invalid Login Information")
+			return HttpResponse ("Inactive Account")
 	else:
 		return render_to_response('loginPage.html')
 
