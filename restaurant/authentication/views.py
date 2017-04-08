@@ -1,10 +1,9 @@
 from django.shortcuts import render, render_to_response, HttpResponseRedirect, HttpResponse
 from authentication.models import UserProfile, User
 from authentication.forms import UserForm, UserProfileForm
-from django.contrib.auth import logout
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 
 
@@ -22,7 +21,7 @@ def signup(request):
 
 #registration status to display THankyou message
 	registered = False
-	
+
 #save the forms if valid
 	if request.method =='POST':
 		user_form = UserForm(request.POST)
@@ -57,7 +56,7 @@ def user_login(request):
 	if request.method == "POST":
 		username = request.POST['username']
 		password = request.POST['password']
-
+		# AJAX ?? POSSIBLY
 		user = authenticate(username = username, password=password)
 		if user:
 			if user.is_active:
