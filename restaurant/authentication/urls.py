@@ -1,9 +1,12 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from authentication import views
+from . import views
+from menu.views import index
+from django.urls import reverse
+
 
 urlpatterns = [
-    url(r'^$', views.index, name='home'),
+    # url(r'^$', reverse('menu:index') ),
     url(r'^register/$', views.signup, name='register/signup'),
     url(r'^login/$', views.user_login, name="login"),
     url(r'^logout/$', views.user_logout, name = 'logout'),
