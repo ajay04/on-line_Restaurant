@@ -8,8 +8,13 @@
 <div class="container">
 <div class="jumbotron">
   <div class="container">
+  {% if user.is_authenticated %}
+    <h1 class="display-3">Welcome, {{ user }} </h1>
+    <p> We hope you enjoy our service. Please review our food if you enjoy it. Else, let us know how can we imporove</p>
+  {% else %}
     <h1 class="display-3">Welcome, visitor!</h1>
     <p>Sign up to order food.</p>
+  {% endif %}
     <br><p>
     <div class="form-group row">
       <div class="col-12">

@@ -40,10 +40,9 @@ def signup(request):
 			profile = userProfile_form.save(commit=False)
 			profile.user = user
 			user.is_active = False
-
 			profile.save()
-
 			registered = True
+			
 		elif user_form.data['password'] != user_form.data['confirm_password']:
 			user_form.add_error('confirm_password', 'Password did not match')
 		else:
@@ -68,9 +67,9 @@ def user_login(request):
 				login(request, user)
 				return HttpResponseRedirect('/')
 			else:
-				return HttpResponse("Inactive Account")
+				return HttpResponse("Invalid Login Information")
 		else:
-			return HttpResponse ("Invalid Login Information")
+			return HttpResponse ("Inactive Account")
 	else:
 		return render_to_response('loginPage.html')
 
