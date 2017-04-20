@@ -30,7 +30,7 @@ def signup(request):
 		user_form = UserForm(request.POST)
 		userProfile_form = UserProfileForm(request.POST)
 	#save the forms if valid
-		if user_form.is_valid() and userProfile_form.is_valid():
+		if user_form.is_valid() and userProfile_form.is_valid() and  user_form.cleaned_data['password'] == user_form.cleaned_data['confirm_password']:
 			user = user_form.save()
 			user.set_password(user.password)
 			user.is_active = False
@@ -44,6 +44,8 @@ def signup(request):
 			profile.save()
 
 			registered = True
+		elif user_form.data['password'] != user_form.data['confirm_password']:
+			user_form.add_error('confirm_password', 'Password did not match')
 		else:
 			print (user_form.errors, userProfile_form.errors)
 	else:
@@ -66,9 +68,9 @@ def user_login(request):
 				login(request, user)
 				return HttpResponseRedirect('/')
 			else:
-				return HttpResponse("Invalid Login Information")
+				return HttpResponse("Inactive Account")
 		else:
-			return HttpResponse ("Inactive Account")
+			return HttpResponse ("Invalid Login Information")
 	else:
 		return render_to_response('loginPage.html')
 

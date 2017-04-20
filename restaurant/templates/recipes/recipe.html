@@ -40,10 +40,12 @@
           <h5>Price: <small> ${{recipe.price}}</small></h5>
           <h5>Rating: <small> {{recipe.avg_rating}}</small></h5>
           <h5>Chef: <small> {{recipe.chef}}</small></h5><br>
-          <p><button class="btn btn-md btn-primary"
+
+          {% if user.is_authenticated %}
+            <p><button class="btn btn-md btn-primary"
              name="button" id='review' data-target='#popup' data-toggle='modal'>Review</button>
             <button class="btn btn-md btn-success">Order</button></p>
-
+          {% endif %}
         </div>
       </div>
       </div>

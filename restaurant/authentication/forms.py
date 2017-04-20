@@ -8,6 +8,7 @@ from django.forms import ModelForm
 class UserForm(ModelForm):
 	password = forms.CharField(
 				widget=forms.PasswordInput())
+	confirm_password = forms.CharField(widget=forms.PasswordInput())
 
 #meta class describes additional propertes about the class it belongs to
 	class Meta:
