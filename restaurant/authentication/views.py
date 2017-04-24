@@ -78,7 +78,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/index')
+    return HttpResponseRedirect('/')
 
 
 def home(request):
