@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_protect
 from recipes.models import Recipe
+from recipes.forms import RecipeForm
 
 
 
@@ -14,8 +15,16 @@ from recipes.models import Recipe
 # Create your views here.
 
 def index(request):
-	context = { 'recipes' : Recipe.objects.all()}
+	user = UserProfile.objects.all()
+	recipe_form = RecipeForm()
+	context = { 'recipes' : Recipe.objects.all(),
+				'recipe_form' : recipe_form,
+						#'user' : user,
+			}
+
+
 	return render(request, 'index.html', context)
+
 
 @csrf_exempt
 def signup(request):
@@ -86,3 +95,22 @@ def home(request):
 	return render_to_response('home.html', {
 		'user' : request.user
 		})
+
+
+def get_user_profile(request, username):
+    """
+    get the user values and display them on the profile page
+    :param request:
+    :param username:
+    :return:
+    """
+    current_user = request.user
+    # print(current_user)
+    user = User.objects.get(username=username)
+    name = user.userprofile.name
+    user_type = user.userprofile.user_type
+    return render(request,
+                  'user_profile.html', {
+                      "user": user,
+                      'name': name,
+                      'user_type': user_type})
