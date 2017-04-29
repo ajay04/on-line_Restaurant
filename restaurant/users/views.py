@@ -28,7 +28,8 @@ def register(request, src=None):
             user_form = UserForm (request.POST or None)
             userProfile_form = CustomerForm(request.POST or None)
 
-        if user_form.is_valid() and userProfile_form.is_valid() and user_form.cleaned_data['password'] == user_form.cleaned_data['confirm_password']:
+        if user_form.is_valid() and userProfile_form.is_valid() and
+         user_form.cleaned_data['password'] == user_form.cleaned_data['confirm_password']:
             user = user_form.save()
             user.set_password(user.password)
             profile = userProfile_form.save(commit=False)
@@ -68,8 +69,8 @@ def signin(request):
                         return HttpResponse ("Inactive Account")
                 except:
                     login(request, user)
-                    return redirect('/')            
-        
+                    return redirect('/')
+
     else:
         return render (request,'users/loginPage.html')
 
