@@ -19,7 +19,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.unregister(User)
-admin.site.registcer(User, UserAdmin)
+admin.site.register(User, UserAdmin)
 
 
 # @admin.register(models.Customer)

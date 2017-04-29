@@ -93,7 +93,8 @@ def addToCart(request,food):
 def placeOrder(request):
     discount = 0.1
     customer = request.user
-    orders = Order.filter(customer=customer, status='cart').order_by('time_stamp')
+    orders = Order.filter(customer=customer,
+                status='cart').order_by('time_stamp')
     total_price = 0.0
     num_orders = 0
     for order in orders:

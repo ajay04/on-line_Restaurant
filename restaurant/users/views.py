@@ -18,7 +18,8 @@ def register(request, src=None):
             user_form = UserForm()
             userProfile_form = CustomerForm()
 
-        return render(request, 'users/register.html', {'uform': user_form, 'pform': userProfile_form})
+        return render(request, 'users/register.html',
+         {'uform': user_form, 'pform': userProfile_form})
 
     elif request.method == 'POST':
         if src == 'staff':
@@ -28,8 +29,9 @@ def register(request, src=None):
             user_form = UserForm (request.POST or None)
             userProfile_form = CustomerForm(request.POST or None)
 
-        if user_form.is_valid() and userProfile_form.is_valid() and
-         user_form.cleaned_data['password'] == user_form.cleaned_data['confirm_password']:
+        if (user_form.is_valid() and userProfile_form.is_valid()
+         and user_form.cleaned_data['password'] ==
+          user_form.cleaned_data['confirm_password']):
             user = user_form.save()
             user.set_password(user.password)
             profile = userProfile_form.save(commit=False)
