@@ -21,7 +21,8 @@ class Food(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse ('menu:food', kwargs={'food':self.name, 'cuisine':self.cuisine} )
+        return reverse ('menu:food',
+         kwargs={'food':self.name, 'cuisine':self.cuisine} )
 
     def rateFood(self,request):
         rating = int(request.POST['value'])
@@ -39,7 +40,7 @@ class Order(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     def increment(self):
         self.quantity +=1
- 
+
 
 class Review(models.Model):
     content = models.TextField()
