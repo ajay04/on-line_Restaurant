@@ -30,7 +30,6 @@ class Food(models.Model):
                                     rating) / (self.num_reviews+1)
         self.num_reviews +=1
 
-
 class Order(models.Model):
     food = models.ForeignKey(Food)
     customer = models.ForeignKey(userModels.User, related_name='orders')
@@ -40,7 +39,6 @@ class Order(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     def increment(self):
         self.quantity +=1
-
 
 class Review(models.Model):
     content = models.TextField()

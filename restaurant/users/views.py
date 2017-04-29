@@ -29,6 +29,7 @@ def register(request, src=None):
             user_form = UserForm (request.POST or None)
             userProfile_form = CustomerForm(request.POST or None)
 
+
         if (user_form.is_valid() and userProfile_form.is_valid()
          and user_form.cleaned_data['password'] ==
           user_form.cleaned_data['confirm_password']):
