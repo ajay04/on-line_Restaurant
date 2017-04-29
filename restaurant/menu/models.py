@@ -12,7 +12,7 @@ class Food(models.Model):
     price = models.PositiveIntegerField(blank=False)
     chef = models.ForeignKey(userModels.User)
     cuisine = models.CharField(max_length=100, default='')
-    customers = models.ManyToManyField(userModels.Customer)
+    # customers = models.ManyToManyField(userModels.Customer)
     numOrdered = models.IntegerField(default=0)
     avg_rating = models.PositiveIntegerField(default=0)
     num_reviews = models.PositiveIntegerField(default=0)
@@ -29,14 +29,17 @@ class Food(models.Model):
                                     rating) / (self.num_reviews+1)
         self.num_reviews +=1
 
-    def orderFood(self,request):
-        pass
 
 class Order(models.Model):
     food = models.ForeignKey(Food)
     customer = models.ForeignKey(userModels.User, related_name='orders')
-    status = models.CharField(max_length=10, default='processing')
+    status = models.CharField(max_length=10, default='cart')
     delivery = models.ForeignKey(userModels.User, related_name ='deliveries')
+    time_stamp = models.DateTimeField(auto_now_add=True)
+    quantity = models.PositiveIntegerField(default=1)
+    def increment(self):
+        self.quantity +=1
+ 
 
 class Review(models.Model):
     content = models.TextField()
